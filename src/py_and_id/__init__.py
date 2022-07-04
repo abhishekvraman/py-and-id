@@ -1,0 +1,1 @@
+from py_and_id import settings
