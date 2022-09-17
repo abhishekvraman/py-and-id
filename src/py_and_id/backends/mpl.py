@@ -1,4 +1,4 @@
-''' Matplotlib drawing backend for schemdraw '''
+''' Matplotlib drawing backend for py_and_id '''
 
 from typing import Sequence
 from io import BytesIO

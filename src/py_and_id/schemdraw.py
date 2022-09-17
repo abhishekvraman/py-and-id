@@ -43,7 +43,7 @@ def config(unit: float=3.0, inches_per_unit: float=0.5,
            font: str='sans-serif', color: str='black',
            lw: float=2, ls: Linestyle='-',
            fill: str=None, bgcolor: str=None) -> None:
-    ''' Set global schemdraw style configuration
+    ''' Set global py_and_id style configuration
 
         Args:
             unit: Full length of a 2-terminal element. Inner zig-zag portion
@@ -57,25 +57,25 @@ def config(unit: float=3.0, inches_per_unit: float=0.5,
             ls: Default line style
             fill: Deault fill color for closed elements
     '''
-    schemdrawstyle['unit'] = unit
-    schemdrawstyle['inches_per_unit'] = inches_per_unit
-    schemdrawstyle['lblofst'] = lblofst
-    schemdrawstyle['fontsize'] = fontsize
-    schemdrawstyle['font'] = font
-    schemdrawstyle['color'] = color
-    schemdrawstyle['lw'] = lw
-    schemdrawstyle['ls'] = ls
-    schemdrawstyle['fill'] = fill
+    py_and_idstyle['unit'] = unit
+    py_and_idstyle['inches_per_unit'] = inches_per_unit
+    py_and_idstyle['lblofst'] = lblofst
+    py_and_idstyle['fontsize'] = fontsize
+    py_and_idstyle['font'] = font
+    py_and_idstyle['color'] = color
+    py_and_idstyle['lw'] = lw
+    py_and_idstyle['ls'] = ls
+    py_and_idstyle['fill'] = fill
     if bgcolor:
-        schemdrawstyle['bgcolor'] = bgcolor
+        py_and_idstyle['bgcolor'] = bgcolor
 
 
-schemdrawstyle: dict[str, Any] = {}  # Global style
+py_and_idstyle: dict[str, Any] = {}  # Global style
 config()  # Initialize default configuration
 
 
 def theme(theme='default'):
-    ''' Set schemdraw theme (line color and background color).
+    ''' Set py_and_id theme (line color and background color).
         Themes match those in jupyter-themes package
         (https://github.com/dunovank/jupyter-themes).
 
@@ -95,35 +95,35 @@ def theme(theme='default'):
     if theme == 'default':
         config(bgcolor='white')
     elif theme == 'dark':
-        schemdrawstyle['color'] = 'white'
-        schemdrawstyle['bgcolor'] = 'black'
+        py_and_idstyle['color'] = 'white'
+        py_and_idstyle['bgcolor'] = 'black'
     elif theme == 'solarizedd':
-        schemdrawstyle['bgcolor'] = '#002b36'
-        schemdrawstyle['color'] = '#657b83'
+        py_and_idstyle['bgcolor'] = '#002b36'
+        py_and_idstyle['color'] = '#657b83'
     elif theme == 'solarizedl':
-        schemdrawstyle['bgcolor'] = '#eee8d5'
-        schemdrawstyle['color'] = '#073642'
+        py_and_idstyle['bgcolor'] = '#eee8d5'
+        py_and_idstyle['color'] = '#073642'
     elif theme == 'onedork':
-        schemdrawstyle['bgcolor'] = '#373e4b'
-        schemdrawstyle['color'] = '#899ab8'
+        py_and_idstyle['bgcolor'] = '#373e4b'
+        py_and_idstyle['color'] = '#899ab8'
     elif theme == 'oceans16':
-        schemdrawstyle['bgcolor'] = '#384151'
-        schemdrawstyle['color'] = '#CDD2E9'
+        py_and_idstyle['bgcolor'] = '#384151'
+        py_and_idstyle['color'] = '#CDD2E9'
     elif theme == 'monokai':
-        schemdrawstyle['bgcolor'] = '#232323'
-        schemdrawstyle['color'] = '#BBBBBB'
+        py_and_idstyle['bgcolor'] = '#232323'
+        py_and_idstyle['color'] = '#BBBBBB'
     elif theme == 'gruvboxl':
-        schemdrawstyle['bgcolor'] = '#ebdbb2'
-        schemdrawstyle['color'] = '#3c3836'
+        py_and_idstyle['bgcolor'] = '#ebdbb2'
+        py_and_idstyle['color'] = '#3c3836'
     elif theme == 'gruvboxd':
-        schemdrawstyle['bgcolor'] = '#1d2021'
-        schemdrawstyle['color'] = '#d5c4a1'
+        py_and_idstyle['bgcolor'] = '#1d2021'
+        py_and_idstyle['color'] = '#d5c4a1'
     elif theme == 'grade3':
-        schemdrawstyle['bgcolor'] = '#ffffff'
-        schemdrawstyle['color'] = '#3f3d46'
+        py_and_idstyle['bgcolor'] = '#ffffff'
+        py_and_idstyle['color'] = '#3f3d46'
     elif theme == 'chesterish':
-        schemdrawstyle['bgcolor'] = '#323A48'
-        schemdrawstyle['color'] = '#92A2BD'
+        py_and_idstyle['bgcolor'] = '#323A48'
+        py_and_idstyle['color'] = '#92A2BD'
     else:
         raise ValueError(f'Unknown theme {theme}')
 
@@ -131,13 +131,13 @@ def theme(theme='default'):
 class Drawing:
     ''' A schematic drawing
 
-        See `schemdraw.config` method for argument defaults
+        See `py_and_id.config` method for argument defaults
 
         Args:
             *elements: List of Element instances to add to the drawing
             file: optional filename to save on exiting context manager
                 or calling draw method.
-            backend: 'svg' or 'matplotlib' backend. Overrides schemdraw.use.
+            backend: 'svg' or 'matplotlib' backend. Overrides py_and_id.use.
             show: Show the drawing after exiting context manager
 
         Attributes:
@@ -154,9 +154,9 @@ class Drawing:
         self.show = show
         self.elements: list[Element] = []
 
-        self.dwgparams: dict[str, Any] = schemdrawstyle.copy()
+        self.dwgparams: dict[str, Any] = py_and_idstyle.copy()
         self.dwgparams.update(kwargs)  # To maintain support for arguments that moved to config method
-        self.unit = kwargs.get('unit', schemdrawstyle.get('unit'))
+        self.unit = kwargs.get('unit', py_and_idstyle.get('unit'))
 
         self.here: XY = Point((0, 0))
         self.theta: float = 0
@@ -299,7 +299,7 @@ class Drawing:
            font: str=None, color: str=None,
            lw: float=None, ls: Linestyle=None,
            fill: str=None, bgcolor: str=None) -> None:
-        ''' Set Drawing configuration, overriding schemdraw global config.
+        ''' Set Drawing configuration, overriding py_and_id global config.
 
             Args:
                 unit: Full length of a 2-terminal element. Inner zig-zag portion
@@ -357,7 +357,7 @@ class Drawing:
                     aspect for best results.
 
             Returns:
-                schemdraw Figure object
+                py_and_id Figure object
         '''
         backend = backend if backend is not None else self.backend
         if (self.fig is None or ax is not None or showframe != self.fig.showframe or backend != self.backend):

@@ -172,7 +172,7 @@ class Segment:
         ''' Draw the segment
 
             Args:
-                fig: schemdraw.Figure to draw on
+                fig: py_and_id.Figure to draw on
                 transform: Transform to apply before drawing
                 style: Default style parameters
         '''
@@ -354,7 +354,7 @@ class SegmentText:
         ''' Draw the segment
 
             Args:
-                fig: schemdraw.Figure to draw on
+                fig: py_and_id.Figure to draw on
                 transform: Transform to apply before drawing
                 style: Default style parameters
         '''
@@ -466,7 +466,7 @@ class SegmentPoly:
         ''' Draw the segment
 
             Args:
-                fig: schemdraw.Figure to draw on
+                fig: py_and_id.Figure to draw on
                 transform: Transform to apply before drawing
                 style: Default style parameters
         '''
@@ -581,7 +581,7 @@ class SegmentCircle:
         ''' Draw the segment
 
             Args:
-                fig: schemdraw.Figure to draw on
+                fig: py_and_id.Figure to draw on
                 transform: Transform to apply before drawing
                 style: Default style parameters
         '''
@@ -697,7 +697,7 @@ class SegmentBezier:
         ''' Draw the segment
 
             Args:
-                fig: schemdraw.Figure to draw on
+                fig: py_and_id.Figure to draw on
                 transform: Transform to apply before drawing
                 style: Default style parameters
         '''
@@ -821,7 +821,7 @@ class SegmentArc:
         ''' Draw the segment
 
             Args:
-                fig: schemdraw.Figure to draw on
+                fig: py_and_id.Figure to draw on
                 transform: Transform to apply before drawing
                 style: Default style parameters
         '''

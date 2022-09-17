@@ -4,9 +4,9 @@
 '''
 import math
 
-from schemdraw.segments import Segment, SegmentPoly, SegmentCircle
-from schemdraw.elements import Element
-from schemdraw.util import linspace, rotate
+from py_and_id.segments import Segment, SegmentPoly, SegmentCircle
+from py_and_id.elements import Element
+from py_and_id.util import linspace, rotate
 
 _outletrad = 1.1
 

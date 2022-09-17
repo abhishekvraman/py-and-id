@@ -1,4 +1,4 @@
-from .schemdraw import Drawing, use, config, theme
+from .py_and_id import Drawing, use, config, theme
 from .segments import Segment, SegmentCircle, SegmentArc, SegmentText, SegmentPoly, SegmentBezier, SegmentArrow
 from .transform import Transform
 from .types import ImageFormat

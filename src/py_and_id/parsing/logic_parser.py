@@ -1,4 +1,4 @@
-''' Module for converting a logic string expression into a schemdraw.Drawing.
+''' Module for converting a logic string expression into a py_and_id.Drawing.
 
 Example:
 
@@ -7,7 +7,7 @@ Example:
 '''
 import pyparsing  # type: ignore
 
-from .. import schemdraw
+from .. import py_and_id
 from .. import logic
 from ..elements import RightLines
 from .buchheim import buchheim
@@ -92,7 +92,7 @@ def to_tree(pres):
 
 
 def drawlogic(tree, gateH=.7, gateW=2, outlabel=None):
-    ''' Draw the LogicTree to a schemdraw Drawing
+    ''' Draw the LogicTree to a py_and_id Drawing
 
         Parameters
         ----------
@@ -107,9 +107,9 @@ def drawlogic(tree, gateH=.7, gateW=2, outlabel=None):
 
         Returns
         -------
-        schemdraw.Drawing
+        py_and_id.Drawing
     '''
-    drawing = schemdraw.Drawing()
+    drawing = py_and_id.Drawing()
     drawing.unit = gateW  # NOTs still use d.unit
 
     dtree = buchheim(tree)
@@ -147,8 +147,8 @@ def drawlogic(tree, gateH=.7, gateW=2, outlabel=None):
 
 
 def logicparse(expr: str, gateW: float=2, gateH: float=.75,
-               outlabel: str=None) -> schemdraw.Drawing:
-    ''' Parse a logic string expression and draw the gates in a schemdraw Drawing
+               outlabel: str=None) -> py_and_id.Drawing:
+    ''' Parse a logic string expression and draw the gates in a py_and_id Drawing
 
         Logic expression is defined by string using 'and', 'or', 'not', etc.
         for example, "a or (b and c)". Parser recognizes several symbols and
@@ -165,7 +165,7 @@ def logicparse(expr: str, gateW: float=2, gateH: float=.75,
             outlabel: Label for logic output
 
         Returns:
-            schemdraw.Drawing with logic tree
+            py_and_id.Drawing with logic tree
     '''
     parsed = parse_string(expr)
     tree = to_tree(parsed)

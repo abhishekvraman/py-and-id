@@ -12,5 +12,5 @@ def __getattr__(name):
     e = getattr(legacy, name, None)
     if e is None:
         raise AttributeError('Element `{}` not found.'.format(name))
-    warnings.warn('Dictionary-based elements are deprecated. Update to class-based elements or import from schemdraw.logic.legacy.', DeprecationWarning)
+    warnings.warn('Dictionary-based elements are deprecated. Update to class-based elements or import from py_and_id.logic.legacy.', DeprecationWarning)
     return e

@@ -1,4 +1,4 @@
-''' SVG drawing backend for schemdraw '''
+''' SVG drawing backend for py_and_id '''
 
 from __future__ import annotations
 
@@ -95,7 +95,7 @@ def settextmode(mode: TextMode, svg2: bool=True) -> None:
             mode: Text Mode.
             svg2: Use SVG2.0. Disable for better compatibility.
     '''
-    warnings.warn('settextmode is deprecated. Use schemdraw.svgconfig',  DeprecationWarning)
+    warnings.warn('settextmode is deprecated. Use py_and_id.svgconfig',  DeprecationWarning)
     config.svg2 = svg2
     config.text = mode
 

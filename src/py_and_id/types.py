@@ -1,4 +1,4 @@
-''' Data types for schemdraw '''
+''' Data types for py_and_id '''
 
 import sys
 if sys.version_info >= (3, 8):

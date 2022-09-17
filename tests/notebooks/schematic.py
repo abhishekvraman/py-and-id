@@ -1,12 +1,12 @@
-''' Test for using schemdraw in a script with interactive pyplot window  '''
-import schemdraw
-import schemdraw.elements as elm
+''' Test for using py_and_id in a script with interactive pyplot window  '''
+import py_and_id
+import py_and_id.elements as elm
 
-#schemdraw.use('svg')
+#py_and_id.use('svg')
 
-with schemdraw.Drawing(file='cap.svg') as d:
+with py_and_id.Drawing(file='cap.svg') as d:
     d.add(elm.Resistor().label('1K'))
     d.add(elm.Capacitor().down())
 
-with schemdraw.Drawing(file='res.svg') as d2:
+with py_and_id.Drawing(file='res.svg') as d2:
     d2.add(elm.Diode().fill(True))
