@@ -1,13 +1,13 @@
 from .elements import Element, ElementDrawing, Element2Term, _set_elm_backend
-from .twoterm import Resistor, ResistorIEEE, ResistorIEC, ResistorVar, ResistorVarIEEE, ResistorVarIEC, Thermistor, Photoresistor, PhotoresistorIEEE, PhotoresistorIEC, Rshunt, Capacitor, Capacitor2, CapacitorVar, CapacitorTrim, Diode, Schottky, DiodeTunnel, DiodeShockley, Zener, Varactor, LED, LED2, Photodiode, Potentiometer, PotentiometerIEEE, PotentiometerIEC, Diac, Triac, SCR, Memristor, Memristor2, Josephson, Fuse, FuseUS, FuseIEEE, FuseIEC, Inductor, Inductor2, Crystal, Breaker, ResistorVarIEC, CPE, SparkGap, RBox, RBoxVar, PotBox, PhotoresistorBox
+from .twoterm import Resistor, ResistorIEEE, ResistorIEC, ResistorVar, ResistorVarIEEE, ResistorVarIEC, Thermistor, Photoresistor, PhotoresistorIEEE, PhotoresistorIEC, Rshunt, Capacitor, Capacitor2, CapacitorVar, CapacitorTrim, CheckValve, Schottky, CheckValveTunnel, CheckValveShockley, Zener, Varactor, LED, LED2, PhotoCheckValve, Potentiometer, PotentiometerIEEE, PotentiometerIEC, Diac, Triac, SCR, Memristor, Memristor2, Josephson, Fuse, FuseUS, FuseIEEE, FuseIEC, Inductor, Inductor2, Crystal, Breaker, ResistorVarIEC, CPE, SparkGap, RBox, RBoxVar, PotBox, PhotoresistorBox
 from .oneterm import Ground, GroundSignal, GroundChassis, Antenna, AntennaLoop, AntennaLoop2, Vss, Vdd
 from .opamp import Opamp
-from .sources import Source, SourceV, SourceI, SourceSin, SourcePulse, SourceSquare, SourceTriangle, SourceRamp, SourceControlled, SourceControlledV, SourceControlledI, BatteryCell, Battery, MeterV, MeterI, MeterA, MeterOhm, Lamp, Solar, Neon
+from .rotary import Pump #, SourceV, SourceI, SourceSin, SourcePulse, SourceSquare, SourceTriangle, SourceRamp, SourceControlled, SourceControlledV, SourceControlledI, BatteryCell, Battery, MeterV, MeterI, MeterA, MeterOhm, Lamp, Solar, Neon
 from .switches import Switch, SwitchSpdt, SwitchSpdt2, SwitchDpst, SwitchDpdt, Button, SwitchReed, SwitchRotary, SwitchDIP
 from .transistors import NFet, PFet, JFet, JFetN, JFetP, Bjt, BjtNpn, BjtPnp, BjtPnp2c, Bjt2, BjtNpn2, BjtPnp2, BjtPnp2c2, NFet2, PFet2, JFet2, JFetN2, JFetP2
 from .misc import Speaker, Mic, Motor, AudioJack
 from .xform import Transformer
-from .cables import Coax, Triax
+from .pipes import Coax, Triax
 from .intcircuits import IcPin, Ic, Multiplexer, IcDIP, VoltageRegulator, DFlipFlop, JKFlipFlop, Ic555, SevenSegment, sevensegdigit
 from .lines import Line, Dot, Arrowhead, Arrow, LineDot, DotDotDot, Wire, Gap, Label, Tag, CurrentLabel, CurrentLabelInline, ZLabel, LoopCurrent, LoopArrow, Rect, Arc2, Arc3, ArcZ, ArcN, ArcLoop, Annotate, Encircle, EncircleBox
 from .connectors import OrthoLines, RightLines, Header, Jumper, BusConnect, BusLine, DB25, DB9, CoaxConnect, Plug, Jack
@@ -20,7 +20,7 @@ import warnings
 
 __all__ = [
     "Element", "ElementDrawing", "Element2Term", 
-    "Resistor", "ResistorIEEE", "ResistorIEC", "ResistorVar", "ResistorVarIEEE", "ResistorVarIEC", "Thermistor", "Photoresistor", "PhotoresistorIEEE", "PhotoresistorIEC", "Capacitor", "Capacitor2", "CapacitorVar", "CapacitorTrim", "Diode", "Schottky", "DiodeTunnel", "DiodeShockley", "Zener", "Varactor", "LED", "LED2", "Photodiode", "Potentiometer", "PotentiometerIEEE", "PotentiometerIEC", "Diac", "Triac", "SCR", "Memristor", "Memristor2", "Josephson", "Fuse", "FuseUS", "FuseIEEE", "FuseIEC", "Inductor", "Inductor2", "Crystal", "Breaker", "ResistorVarIEC", "CPE", "SparkGap", "RBox", "RBoxVar", "PotBox", "PhotoresistorBox",
+    "Resistor", "ResistorIEEE", "ResistorIEC", "ResistorVar", "ResistorVarIEEE", "ResistorVarIEC", "Thermistor", "Photoresistor", "PhotoresistorIEEE", "PhotoresistorIEC", "Capacitor", "Capacitor2", "CapacitorVar", "CapacitorTrim", "CheckValve", "Schottky", "CheckValveTunnel", "CheckValveShockley", "Zener", "Varactor", "LED", "LED2", "PhotoCheckValve", "Potentiometer", "PotentiometerIEEE", "PotentiometerIEC", "Diac", "Triac", "SCR", "Memristor", "Memristor2", "Josephson", "Fuse", "FuseUS", "FuseIEEE", "FuseIEC", "Inductor", "Inductor2", "Crystal", "Breaker", "ResistorVarIEC", "CPE", "SparkGap", "RBox", "RBoxVar", "PotBox", "PhotoresistorBox",
     "Ground", "GroundSignal", "GroundChassis", "Antenna", "AntennaLoop", "AntennaLoop2", "Vss", "Vdd",
     "Opamp",
     "Source", "SourceV", "SourceI", "SourceSin", "SourcePulse", "SourceSquare", "SourceTriangle", "SourceRamp", "SourceControlled", "SourceControlledV", "SourceControlledI", "BatteryCell", "Battery", "MeterV", "MeterI", "MeterA", "MeterOhm", "Lamp", "Solar", "Neon",

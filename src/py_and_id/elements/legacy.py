@@ -30,17 +30,17 @@ METER_V = elm.MeterV
 METER_I = elm.MeterI
 METER_OHM = elm.MeterOhm
 XTAL = elm.Crystal
-DIODE = elm.Diode
-DIODE_F = partial(elm.Diode, fill=True)
+CHECKVALVE = elm.CheckValve
+CHECKVALVE_F = partial(elm.CheckValve, fill=True)
 SCHOTTKY = elm.Schottky
 SCHOTTKY_F = partial(elm.Schottky, fill=True)
-DIODE_TUNNEL = elm.DiodeTunnel
-DIODE_TUNNEL_F = partial(elm.DiodeTunnel, fill=True)
+CHECKVALVE_TUNNEL = elm.CheckValveTunnel
+CHECKVALVE_TUNNEL_F = partial(elm.CheckValveTunnel, fill=True)
 ZENER = elm.Zener
 ZENER_F = partial(elm.Zener, fill=True)
 LED = elm.LED  # Same name!
 LED2 = elm.LED2
-PHOTODIODE = elm.Photodiode
+PHOTOCheckValve = elm.PhotoCheckValve
 DIAC = elm.Diac
 DIAC_F = partial(elm.Diac, fill=True)
 TRIAC = elm.Triac

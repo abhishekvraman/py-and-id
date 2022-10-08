@@ -22,7 +22,7 @@ def fix_capstyle(capstyle):
 
 
 class Figure:
-    ''' Schemdraw figure on Matplotlib figure
+    ''' Py-and-id figure on Matplotlib figure
 
         Args:
             bbox: Coordinate bounding box for drawing, used to

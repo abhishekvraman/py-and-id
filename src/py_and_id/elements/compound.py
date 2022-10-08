@@ -67,7 +67,7 @@ class Optocoupler(ElementCompound):
                  boxpad: float=0.2, base: bool=False, **kwargs):
         unit = 1.5
         super().__init__(*d, unit=unit, **kwargs)
-        D = self.add(elm.Diode(d='d'))
+        D = self.add(elm.CheckValve(d='d'))
         bjt = elm.BjtNpn(d='r', at=(1, -unit/2))
         bjt.segments.pop(0)  # Remove base contact
         B = self.add(bjt)
@@ -252,7 +252,7 @@ class Wheatstone(ElementCompound):
         
         
 class Rectifier(ElementCompound):
-    ''' Diode Rectifier Bridge
+    ''' CheckValve Rectifier Bridge
 
         Args:
             fill: Fill the didoes
@@ -266,10 +266,10 @@ class Rectifier(ElementCompound):
     '''
     def __init__(self, fill=False, labels=None, **kwargs):
         super().__init__(**kwargs)
-        A = elm.Diode(fill=fill).theta(45)
-        B = elm.Diode(fill=fill).theta(-45)
-        C = elm.Diode(fill=fill).theta(-135).reverse()
-        D = elm.Diode(fill=fill).theta(135).reverse()
+        A = elm.CheckValve(fill=fill).theta(45)
+        B = elm.CheckValve(fill=fill).theta(-45)
+        C = elm.CheckValve(fill=fill).theta(-135).reverse()
+        D = elm.CheckValve(fill=fill).theta(135).reverse()
 
         locs = ['top', 'top', 'bottom', 'bottom']
         if labels:

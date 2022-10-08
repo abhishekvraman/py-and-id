@@ -168,17 +168,23 @@ class Crystal(Element2Term):
              (xgap*2, resheight), (xgap*2, -resheight), gap, (xgap*2, 0)]))
 
 
-class Diode(Element2Term):
-    ''' Diode '''
+class CheckValve(Element2Term):
+    ''' CheckValve '''
     def __init__(self, *d, **kwargs):
         super().__init__(*d, **kwargs)
-        self.segments.append(Segment([(0, 0), gap, (resheight*1.4, resheight),
-                                      (resheight*1.4, -resheight), gap, (resheight*1.4, 0)]))
-        self.segments.append(SegmentPoly([(0, resheight), (resheight*1.4, 0), (0, -resheight)]))
+        self.segments.append(Segment([(0, 0),
+                                      (0, -resheight),  
+                                      (0, resheight),
+                                      (resheight*2.4, -resheight),
+                                      (resheight*2.4, resheight),
+                                      (resheight*2.4, 0)
+                                      ]))
+        self.segments.append(Segment([(0, resheight),
+                                      (resheight*2.4, -resheight)], arrow='->',
+                                     arrowwidth=.16, arrowlength=.2))
 
-
-class Schottky(Diode):
-    ''' Schottky Diode '''
+class Schottky(CheckValve):
+    ''' Schottky CheckValve '''
     def __init__(self, *d, **kwargs):
         super().__init__(*d, **kwargs)
         schottky_width = 0.1
@@ -192,8 +198,8 @@ class Schottky(Diode):
              (resheight*1.4+schottky_width, -resheight+schottky_width)]))
 
 
-class DiodeTunnel(Diode):
-    ''' Tunnel Diode '''
+class CheckValveTunnel(CheckValve):
+    ''' Tunnel CheckValve '''
     def __init__(self, *d, **kwargs):
         super().__init__(*d, **kwargs)
         tunnel_width = 0.1
@@ -203,8 +209,8 @@ class DiodeTunnel(Diode):
                                       (resheight*1.4-tunnel_width, -resheight)]))
 
 
-class DiodeShockley(Element2Term):
-    ''' Shockley Diode '''
+class CheckValveShockley(Element2Term):
+    ''' Shockley CheckValve '''
     def __init__(self, *d, **kwargs):
         super().__init__(*d, **kwargs)
         self.segments.append(Segment([(0, 0), (resheight*1.4, 0), (resheight*1.4, resheight),
@@ -212,8 +218,8 @@ class DiodeShockley(Element2Term):
         self.segments.append(Segment([(0, -resheight), (0, resheight), (resheight*1.4, 0)]))
 
 
-class Zener(Diode):
-    ''' Zener Diode '''
+class Zener(CheckValve):
+    ''' Zener CheckValve '''
     def __init__(self, *d, **kwargs):
         super().__init__(*d, **kwargs)
         zener_width = 0.1
@@ -224,7 +230,7 @@ class Zener(Diode):
 
 
 class Varactor(Element2Term):
-    ''' Varactor Diode/Varicap/Variable Capacitance Diode '''
+    ''' Varactor CheckValve/Varicap/Variable Capacitance CheckValve '''
     def __init__(self, *d, **kwargs):
         super().__init__(*d, **kwargs)
         capgap = .13
@@ -237,8 +243,8 @@ class Varactor(Element2Term):
         self.segments.append(SegmentPoly([(0, resheight), (resheight*1.4, 0), (0, -resheight)]))
 
 
-class LED(Diode):
-    ''' Light emitting diode '''
+class LED(CheckValve):
+    ''' Light emitting CheckValve '''
     def __init__(self, *d, **kwargs):
         super().__init__(*d, **kwargs)
         self.segments.append(Segment([(resheight, resheight*1.5), (resheight*2, resheight*3.25)],
@@ -248,8 +254,8 @@ class LED(Diode):
         self.params['lblloc'] = 'bot'
 
 
-class LED2(Diode):
-    ''' Light emitting diode (curvy light lines) '''
+class LED2(CheckValve):
+    ''' Light emitting CheckValve (curvy light lines) '''
     def __init__(self, *d, **kwargs):
         super().__init__(*d, **kwargs)
         x = linspace(-1, 1)
@@ -270,8 +276,8 @@ class LED2(Diode):
         self.params['lblloc'] = 'bot'
 
 
-class Photodiode(Diode):
-    ''' Photo-sensitive diode '''
+class PhotoCheckValve(CheckValve):
+    ''' Photo-sensitive CheckValve '''
     def __init__(self, *d, **kwargs):
         super().__init__(*d, **kwargs)
         x = linspace(-1, 1)
@@ -322,7 +328,7 @@ class PotentiometerIEC(ResistorIEC):
 
 
 class Diac(Element2Term):
-    ''' Diac (diode for alternating current) '''
+    ''' Diac (CheckValve for alternating current) '''
     def __init__(self, *d, **kwargs):
         super().__init__(*d, **kwargs)
         self.segments.append(Segment(
@@ -347,7 +353,7 @@ class Triac(Diac):
         self.anchors['gate'] = (resheight*1.4+.5, .5)
 
 
-class SCR(Diode):
+class SCR(CheckValve):
     ''' Silicon controlled rectifier (or thyristor)
 
         Anchors:
