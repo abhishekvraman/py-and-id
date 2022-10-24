@@ -1,4 +1,4 @@
-''' Cable elements, coaxial and triaxial '''
+''' Pipe elements, insulated and triaxial '''
 
 import math
 import warnings
