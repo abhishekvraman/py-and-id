@@ -10,20 +10,20 @@ RES = elm.Resistor
 RES_VAR = elm.ResistorVar
 RBOX = elm.ResistorIEC
 POT = elm.Potentiometer
-CAP = elm.Capacitor
-CAP_P = partial(elm.Capacitor, polar=True)
-CAP2 = elm.Capacitor2
-CAP2_P = partial(elm.Capacitor2, polar=True)
-CAP_VAR = elm.CapacitorVar
+FLANGE = elm.Flange
+FLANGE_P = partial(elm.Flange, polar=True)
+FLANGE2 = elm.Flange2
+FLANGE2_P = partial(elm.Flange2, polar=True)
+FLANGE_VAR = elm.FlangeVar
 INDUCTOR = elm.Inductor
 INDUCTOR2 = elm.Inductor2
-SOURCE = elm.Source
-SOURCE_V = elm.SourceV
-SOURCE_I = elm.SourceI
-SOURCE_SIN = elm.SourceSin
-SOURCE_CONT = elm.SourceControlled
-SOURCE_CONT_I = elm.SourceControlledI
-SOURCE_CONT_V = elm.SourceControlledV
+PUMP = elm.Pump
+PUMP_V = elm.PumpV
+ROTARY_I = elm.RotaryI
+ROTARY_SIN = elm.RotarySin
+ROTARY_CONT = elm.RotaryControlled
+ROTARY_CONT_I = elm.RotaryControlledI
+ROTARY_CONT_V = elm.RotaryControlledV
 BATT_CELL = elm.BatteryCell
 BATTERY = elm.Battery
 METER_V = elm.MeterV

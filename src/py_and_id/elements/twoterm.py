@@ -92,8 +92,8 @@ class Rshunt(ResistorIEC):
         self.anchors['v2'] = (reswidth*6+resheight*1.5, -resheight*2)
 
 
-class Capacitor(Element2Term):
-    ''' Capacitor (flat plates)
+class Flange(Element2Term):
+    ''' Flange (flat plates)
 
         Args:
             polar: Add polarity + sign
@@ -108,8 +108,8 @@ class Capacitor(Element2Term):
             self.segments.append(SegmentText((-capgap*1.2, capgap), '+'))
 
 
-class Capacitor2(Element2Term):
-    ''' Capacitor (curved bottom plate)
+class Flange2(Element2Term):
+    ''' Flange (curved bottom plate)
 
         Args:
             polar: Add polarity + sign
@@ -126,16 +126,16 @@ class Capacitor2(Element2Term):
             self.segments.append(SegmentText((-capgap*1.2, capgap), '+'))
 
 
-class CapacitorVar(Capacitor):
-    ''' Variable capacitor '''
+class FlangeVar(Flange):
+    ''' Variable Flange '''
     def __init__(self, *d, **kwargs):
         super().__init__(*d, **kwargs)
         self.segments.append(Segment([(-2*reswidth, -resheight), (3*reswidth, reswidth*2)],
                                      arrow='->', arrowwidth=.2, arrowlength=.2))
 
 
-class CapacitorTrim(Capacitor):
-    ''' Trim capacitor '''
+class FlangeTrim(Flange):
+    ''' Trim Flange '''
     def __init__(self, *d, **kwargs):
         super().__init__(*d, **kwargs)
         capgap = 0.18
